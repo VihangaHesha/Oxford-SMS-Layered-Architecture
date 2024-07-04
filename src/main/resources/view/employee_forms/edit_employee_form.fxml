@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="editEmpPane" prefHeight="541.0" prefWidth="1120.0" style="-fx-background-color: #B3DAF2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.oxford.contoller.employee_form_controllers.EditEmployeeFormController">
+   <children>
+      <Label alignment="CENTER" layoutX="457.0" layoutY="9.0" prefHeight="40.0" prefWidth="227.0" text="Edit An Employee">
+         <font>
+            <Font name="Bookman Old Style Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="437.0" layoutY="43.0" prefHeight="6.0" prefWidth="263.0" style="-fx-background-color: black;" visible="false" />
+      <TableView fx:id="tblEmployee" layoutX="26.0" layoutY="254.0" onMouseClicked="#empDetailsOnToFieldsOnAction" prefHeight="271.0" prefWidth="1064.0" stylesheets="@../../style/NormalStyleSheet.css">
+         <columns>
+            <TableColumn fx:id="colEmpId" prefWidth="50.0" text="ID" />
+            <TableColumn fx:id="colUserId" prefWidth="56.0" text="User" />
+            <TableColumn fx:id="colEmpName" prefWidth="143.0" text="Name" />
+            <TableColumn fx:id="colContact" prefWidth="104.0" text="Contact" />
+            <TableColumn fx:id="colEmpAddress" prefWidth="252.0" text="Address" />
+            <TableColumn fx:id="colEmpType" prefWidth="102.0" text="Type" />
+         </columns>
+      </TableView>
+      <Label layoutX="28.0" layoutY="127.0" prefHeight="34.0" prefWidth="161.0" text="Contact Number :">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="111.0" layoutY="79.0" prefHeight="26.0" prefWidth="66.0" text="Name :">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="182.0" prefHeight="26.0" prefWidth="83.0" text="Address :">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="583.0" layoutY="190.0" prefHeight="26.0" prefWidth="66.0" text="Type :">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="611.0" layoutY="87.0" prefHeight="26.0" prefWidth="41.0" text="ID :">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="574.0" layoutY="139.0" prefHeight="26.0" prefWidth="74.0" text="User Id :">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" graphicTextGap="14.0" layoutX="904.0" layoutY="129.0" onAction="#btnEmpEditOnAction" prefHeight="68.0" prefWidth="182.0" styleClass="formInFormButtons" stylesheets="@../../style/ProjectStyleSheet.css" text="Update Detail" textFill="WHITE">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/icons/icons8-edit-file-96.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="txtEmployeeName" layoutX="179.0" layoutY="75.0" onKeyPressed="#txtEmpNameCheckOnAction" prefHeight="34.0" prefWidth="214.0" />
+      <JFXTextField fx:id="txtContactNumber" layoutX="181.0" layoutY="127.0" onKeyPressed="#txtContactCheckOnAction" prefHeight="34.0" prefWidth="167.0" />
+      <JFXTextField fx:id="txtAddress" layoutX="180.0" layoutY="179.0" onKeyPressed="#txtAddressCheckOnAction" prefHeight="34.0" prefWidth="320.0" />
+      <JFXTextField fx:id="txtEmpId" layoutX="649.0" layoutY="83.0" onKeyPressed="#txtEmpIdCheckOnAction" prefHeight="34.0" prefWidth="149.0" />
+      <JFXTextField fx:id="txtUserId" layoutX="649.0" layoutY="134.0" onKeyPressed="#txtUserIdCheckOnAction" prefHeight="34.0" prefWidth="149.0" />
+      <JFXTextField fx:id="txtEmpType" layoutX="648.0" layoutY="186.0" onKeyPressed="#txtEmpTypeCheckOnAction" prefHeight="34.0" prefWidth="149.0" />
+   </children>
+</Pane>

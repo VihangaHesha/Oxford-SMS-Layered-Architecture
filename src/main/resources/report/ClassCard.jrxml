@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClassCard" pageWidth="650" pageHeight="500" columnWidth="610" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="12bc9958-5be6-48eb-ab2f-68d1b500e298">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (5)"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT p.PayId,p.Date,s.StId,p.Amount,s.Name,sub.Description FROM Student s join Payment p on s.StId=p.StId join Payment_Details pd on p.PayId=pd.PayId join Subject sub on pd.SubId=sub.SubId  ORDER BY  PayId  desc LIMIT 1]]>
+	</queryString>
+	<field name="PayId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PayId"/>
+		<property name="com.jaspersoft.studio.field.label" value="PayId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="Date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Date"/>
+		<property name="com.jaspersoft.studio.field.label" value="Date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="StId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="StId"/>
+		<property name="com.jaspersoft.studio.field.label" value="StId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="Amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="Amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="Description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Description"/>
+		<property name="com.jaspersoft.studio.field.label" value="Description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="subject"/>
+	</field>
+	<group name="PayId">
+		<groupExpression><![CDATA[$F{PayId}]]></groupExpression>
+	</group>
+	<group name="Date">
+		<groupExpression><![CDATA[$F{Date}]]></groupExpression>
+	</group>
+	<group name="StId">
+		<groupExpression><![CDATA[$F{StId}]]></groupExpression>
+	</group>
+	<group name="Amount">
+		<groupExpression><![CDATA[$F{Amount}]]></groupExpression>
+	</group>
+	<group name="Name">
+		<groupExpression><![CDATA[$F{Name}]]></groupExpression>
+	</group>
+	<group name="Description">
+		<groupExpression><![CDATA[$F{Description}]]></groupExpression>
+	</group>
+	<background>
+		<band height="500" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image scaleImage="FillFrame">
+				<reportElement x="-20" y="0" width="649" height="499" uuid="4555bec3-1116-40bb-b508-0cbaccdcb5b0"/>
+				<imageExpression><![CDATA["C:/Users/Vihanga/Downloads/shapelined-_JBKdviweXI-unsplash.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="195" y="31" width="208" height="14" uuid="6d1882b1-8c5f-4cac-b649-19edfdfa0097"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Galle Rd,Poddala Junction,Poddala,Galle.]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="246" y="43" width="100" height="16" uuid="a28c232a-7b8d-4114-a4e0-e90673031a3e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="246" y="55" width="100" height="17" uuid="a70d1a64-2c8f-4569-a10d-b4886fc8483e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="3" y="1" width="80" height="76" uuid="b4b4bbb6-07be-40ae-a76d-aadf4449d74a"/>
+				<imageExpression><![CDATA["C:/Users/Vihanga/IdeaProjects/oxford-student-mangement-system/src/main/resources/assets/icons/Oxford Educational Institute (1).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="186" y="1" width="226" height="30" uuid="8bf465ef-48a1-4c43-879b-c70614557ff2"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Oxford Educational Institute]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="188" y="10" width="90" height="30" uuid="aa6b8da9-f51e-4304-ace0-9d7d78827647">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d92ff53-173b-4278-8588-d609b99ee7a7"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<text><![CDATA[Payment ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="50" width="100" height="30" uuid="1f5c9324-7b99-4677-a96e-04d5a85c6706">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c722ba65-ea8c-46fd-9ba8-0a3ce6a25eee"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="50" width="80" height="30" uuid="5a6074ec-bd7b-474e-9e9b-b357b8bef44f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="69dc39c8-864d-4566-9811-8b3ed1f98a9d"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<text><![CDATA[Student ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="50" width="90" height="30" uuid="ba7eac8e-1125-4241-8b6c-08cf397d382b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a91eb309-3845-41ee-a7e2-d4bc08799840"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<text><![CDATA[Fee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="166" height="30" uuid="999e0d2e-8ce9-47f5-a05f-cb9f28ce60b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58dce456-88d1-46c0-84ff-377e6b08338b"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="50" width="174" height="30" uuid="c731f64a-3ae5-45e8-a3fe-8b5031c38d4a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e3fcdf8-adbd-4a16-8d97-ac6da8f8915d"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="10" width="90" height="30" uuid="856c1d8d-0779-4f25-852e-6c69779817bf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d92ff53-173b-4278-8588-d609b99ee7a7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PayId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="420" y="2" width="100" height="30" uuid="a341787e-f3a0-4089-807a-e637e68c73e5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c722ba65-ea8c-46fd-9ba8-0a3ce6a25eee"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="2" width="80" height="30" uuid="367c15dd-0aec-4d9f-970b-7f8a5acb6a4e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="69dc39c8-864d-4566-9811-8b3ed1f98a9d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{StId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="2" width="90" height="30" uuid="fa63da04-d1fc-4120-b25a-7e8b86addc2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a91eb309-3845-41ee-a7e2-d4bc08799840"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="2" width="166" height="30" uuid="514870b7-0453-4e0e-b51d-3e0ea7e10fb5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58dce456-88d1-46c0-84ff-377e6b08338b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="2" width="174" height="30" uuid="02772850-f45e-429d-b7e4-46836b77bf94">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e3fcdf8-adbd-4a16-8d97-ac6da8f8915d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="106" splitType="Stretch">
+			<line>
+				<reportElement x="130" y="7" width="350" height="1" uuid="b3d2deb0-fe9b-45c6-9b7e-2537a36f50c2"/>
+			</line>
+			<staticText>
+				<reportElement x="255" y="20" width="100" height="21" uuid="2c53be6b-7bb0-4e44-a619-d25f6fd7dbce"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Thank You !]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="40" width="156" height="20" uuid="98d269b3-b65e-46dc-9f2c-4f21610c3791"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Have A Bright Future !]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="56" width="248" height="20" uuid="27d9a488-a0df-4d86-bb91-1816fd560219"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
+				<text><![CDATA[##########  Hot Line  ##########]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="76" width="100" height="30" uuid="bdf637e5-eda3-4262-a376-ff46ba761469"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
+				<text><![CDATA[011-2583107]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="1" splitType="Stretch"/>
+	</summary>
+</jasperReport>

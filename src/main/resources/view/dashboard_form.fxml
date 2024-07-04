@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="stackPanes" stylesheets="@../style/PaneStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.oxford.contoller.DashboardFormController">
+   <left>
+      <VBox prefHeight="566.0" prefWidth="80.0" styleClass="boarder" stylesheets="@../style/ProjectStyleSheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="700.0" prefWidth="80.0" style="-fx-background-color: #4F62E5;" styleClass="pane" stylesheets="@../style/ProjectStyleSheet.css">
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="160.0" onAction="#btnHomeOnAction" prefHeight="45.0" prefWidth="55.0" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-home-50%20(2).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="4.0" layoutY="242.0" onAction="#btnStudentOnAction" prefHeight="52.0" prefWidth="67.0" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-student-center-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="8.0" layoutY="324.0" onAction="#btnClassroomOnAction" prefHeight="45.0" prefWidth="55.0" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-classroom-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="406.0" onAction="#btnEmployeeOnAction" prefHeight="45.0" prefWidth="55.0" styleClass="EmployeeButton" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-employee-50%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="8.0" layoutY="488.0" onAction="#btnEquipmentOnAction" prefHeight="45.0" prefWidth="55.0" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-stationary-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="570.0" onAction="#btnExitOnAction" prefHeight="45.0" prefWidth="55.0" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-exit-50%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnUser" buttonType="RAISED" layoutX="7.0" layoutY="78.0" onAction="#btnUserOnAction" prefHeight="45.0" prefWidth="55.0" stylesheets="@../style/ProjectStyleSheet.css" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/icons8-user-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <StackPane fx:id="dashContainer" prefHeight="150.0" prefWidth="200.0" styleClass="stackPanes" stylesheets="@../style/ProjectStyleSheet.css" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

@@ -14,7 +14,7 @@ import lk.ijse.oxford.db.DbConnection;
 import lk.ijse.oxford.DTO.*;
 import lk.ijse.oxford.DTO.tm.PayDetailTm;
 import lk.ijse.oxford.DTO.tm.PaymentCartTm;
-import lk.ijse.oxford.DAO.Custom.Impl.PaymentRepo;
+import lk.ijse.oxford.DAO.Custom.Impl.PaymentDAOImpl;
 import lk.ijse.oxford.DAO.Custom.Impl.PlacePaymentRepo;
 import lk.ijse.oxford.DAO.Custom.Impl.SubjectRepo;
 import lk.ijse.oxford.util.Regex;
@@ -74,7 +74,7 @@ public class StudentFeesController {
     private TableColumn<?,?>colDate;
     @FXML
     private TableView<PayDetailTm> tblLastTransactions;
-    private List<PayDetail> payDetail = new ArrayList<>();
+    private List<PayDetailDTO> payDetail = new ArrayList<>();
     private double netTotal=0;
     private String pickedDate;
 
@@ -97,10 +97,10 @@ public class StudentFeesController {
         lblSeats.setText("1");
     }
 
-    private List<PayDetail> getLastFiveTransaction() {
-        List<PayDetail> payDetailList = null;
+    private List<PayDetailDTO> getLastFiveTransaction() {
+        List<PayDetailDTO> payDetailList = null;
         try {
-            payDetailList = PaymentRepo.getAll();
+            payDetailList = PaymentDAOImpl.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -110,7 +110,7 @@ public class StudentFeesController {
     private void loadTransactionTable() {
         ObservableList<PayDetailTm> tmList = FXCollections.observableArrayList();
 
-        for (PayDetail payDetail : payDetail) {
+        for (PayDetailDTO payDetail : payDetail) {
             PayDetailTm payDetailTm = new PayDetailTm(
                     payDetail.getStId(),
                     payDetail.getPayId(),
@@ -142,7 +142,7 @@ public class StudentFeesController {
 
     private void loadNextPayId() {
         try {
-            String currentId = PaymentRepo.currentId();
+            String currentId = PaymentDAOImpl.currentId();
             String nextId = nextId(currentId);
 
             lblPaymentId.setText(nextId);
@@ -185,7 +185,7 @@ public class StudentFeesController {
             double totalFee = Double.parseDouble(lblNetTotal.getText());
             Date date = Date.valueOf(pickedDate);
 
-            var payment = new Payment(payId,totalFee, date, stId,subId);
+            var payment = new PaymentDTO(payId,totalFee, date, stId,subId);
 
             List<PaymentDetails> poList = new ArrayList<>();
 

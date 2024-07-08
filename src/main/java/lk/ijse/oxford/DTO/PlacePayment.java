@@ -10,6 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class PlacePayment {
-    private Payment payment;
+    private PaymentDTO payment;
     private List<PaymentDetails> pdList;
 }

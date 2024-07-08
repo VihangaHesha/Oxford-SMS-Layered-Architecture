@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class MarkAttendance {
-    private AttendMarkingDTO attendMarking;
-    private CheckPayment checkPayment;
+public class CheckPaymentDTO {
+    private String stId;
+    private int month;
 }

@@ -4,10 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CheckPayment {
+public class PayDetailDTO {
+    private String payId;
     private String stId;
-    private int month;
+    private double fee;
+    private Date date;
 }

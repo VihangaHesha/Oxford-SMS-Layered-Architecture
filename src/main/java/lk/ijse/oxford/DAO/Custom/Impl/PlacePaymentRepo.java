@@ -13,7 +13,7 @@ public class PlacePaymentRepo {
         connection.setAutoCommit(false);
 
         try {
-            boolean isPaymentSaved = PaymentRepo.save(po.getPayment());
+            boolean isPaymentSaved = PaymentDAOImpl.save(po.getPayment());
             if (isPaymentSaved) {
                 boolean isPaymentDetailSaved = PaymentDetailsRepo.save(po.getPdList());
                 if (isPaymentDetailSaved) {

@@ -79,6 +79,8 @@ public class HomeFormController {
     EquipmentBO equipmentBO = new EquipmentBOImpl();
     AttendanceBO attendanceBO = new AttendanceBOImpl();
 
+    SetAttendanceBO setAttendanceBO = new SetAttendanceBOImpl();
+
     public void initialize(){
         this.timeTableList = getTimeTable();
         setDate();
@@ -95,7 +97,7 @@ public class HomeFormController {
             employeeCount = employeeBO.getEmployeeCount();
             equipmentCount = equipmentBO.getEquipmentCount();
             totalSalary = salaryBO.getTotalSalary();
-            totalPayments = PaymentRepo.getTotalPayments();
+            totalPayments = PaymentDAOImpl.getTotalPayments();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -248,12 +250,12 @@ public class HomeFormController {
 
 
             AttendMarkingDTO attendMarking = new AttendMarkingDTO(attendId,thisDate,attendMark,stId);
-            CheckPayment checkPayment = new CheckPayment(stId,monthNumber);
+            CheckPaymentDTO checkPayment = new CheckPaymentDTO(stId,monthNumber);
 
-            MarkAttendance markAttendance = new MarkAttendance(attendMarking,checkPayment);
+            MarkAttendanceDTO markAttendance = new MarkAttendanceDTO(attendMarking,checkPayment);
+
             try {
-                boolean isChecked = SetAttendanceRepo.markAttendance(markAttendance);
-                System.out.println(isChecked);
+                boolean isChecked = setAttendanceBO.markAttendance(markAttendance);
                 if(isChecked) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Attendance Marked!").show();
                 } else {

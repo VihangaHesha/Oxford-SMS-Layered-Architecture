@@ -9,7 +9,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Payment {
+public class PaymentDTO {
     private String payId;
     private double amount;
     private Date date;

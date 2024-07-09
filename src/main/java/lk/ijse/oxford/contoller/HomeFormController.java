@@ -78,8 +78,9 @@ public class HomeFormController {
     SalaryBO salaryBO = new SalaryBOImpl();
     EquipmentBO equipmentBO = new EquipmentBOImpl();
     AttendanceBO attendanceBO = new AttendanceBOImpl();
-
     SetAttendanceBO setAttendanceBO = new SetAttendanceBOImpl();
+    PaymentBO paymentBO = new PaymentBOImpl();
+
 
     public void initialize(){
         this.timeTableList = getTimeTable();
@@ -97,7 +98,7 @@ public class HomeFormController {
             employeeCount = employeeBO.getEmployeeCount();
             equipmentCount = equipmentBO.getEquipmentCount();
             totalSalary = salaryBO.getTotalSalary();
-            totalPayments = PaymentDAOImpl.getTotalPayments();
+            totalPayments = paymentBO.getTotalPayments();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

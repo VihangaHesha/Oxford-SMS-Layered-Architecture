@@ -1,5 +1,7 @@
 package lk.ijse.oxford.DAO.Custom.Impl;
 
+import lk.ijse.oxford.BO.Custom.Impl.PaymentBOImpl;
+import lk.ijse.oxford.BO.Custom.PaymentBO;
 import lk.ijse.oxford.db.DbConnection;
 import lk.ijse.oxford.DTO.PlacePayment;
 
@@ -7,13 +9,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PlacePaymentRepo {
+    PaymentBO paymentBO = new PaymentBOImpl();
 
-    public static boolean placePayment(PlacePayment po) throws SQLException {
+    public boolean placePayment(PlacePayment po) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
 
         try {
-            boolean isPaymentSaved = PaymentDAOImpl.save(po.getPayment());
+            boolean isPaymentSaved = paymentBO.save(po.getPayment());
             if (isPaymentSaved) {
                 boolean isPaymentDetailSaved = PaymentDetailsRepo.save(po.getPdList());
                 if (isPaymentDetailSaved) {

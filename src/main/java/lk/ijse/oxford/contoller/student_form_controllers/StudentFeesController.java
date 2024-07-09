@@ -10,12 +10,14 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.oxford.BO.Custom.Impl.PaymentBOImpl;
+import lk.ijse.oxford.BO.Custom.PaymentBO;
+import lk.ijse.oxford.BO.Custom.PlacePaymentBO;
 import lk.ijse.oxford.db.DbConnection;
 import lk.ijse.oxford.DTO.*;
 import lk.ijse.oxford.DTO.tm.PayDetailTm;
 import lk.ijse.oxford.DTO.tm.PaymentCartTm;
-import lk.ijse.oxford.DAO.Custom.Impl.PaymentDAOImpl;
-import lk.ijse.oxford.DAO.Custom.Impl.PlacePaymentRepo;
+import lk.ijse.oxford.BO.Custom.Impl.PlacePaymentBOImpl;
 import lk.ijse.oxford.DAO.Custom.Impl.SubjectRepo;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
@@ -78,6 +80,9 @@ public class StudentFeesController {
     private double netTotal=0;
     private String pickedDate;
 
+    PaymentBO paymentBO = new PaymentBOImpl();
+    PlacePaymentBO placePaymentBO = new PlacePaymentBOImpl();
+
     public void initialize(){
         this.payDetail = getLastFiveTransaction();
         setCellValueFactory();
@@ -100,8 +105,10 @@ public class StudentFeesController {
     private List<PayDetailDTO> getLastFiveTransaction() {
         List<PayDetailDTO> payDetailList = null;
         try {
-            payDetailList = PaymentDAOImpl.getAll();
+            payDetailList = paymentBO.getAll();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return payDetailList;
@@ -142,11 +149,13 @@ public class StudentFeesController {
 
     private void loadNextPayId() {
         try {
-            String currentId = PaymentDAOImpl.currentId();
+            String currentId = paymentBO.currentId();
             String nextId = nextId(currentId);
 
             lblPaymentId.setText(nextId);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -203,7 +212,7 @@ public class StudentFeesController {
 
             PlacePayment po = new PlacePayment(payment, poList);
             try {
-                boolean isPlaced = PlacePaymentRepo.placePayment(po);
+                boolean isPlaced = placePaymentBO.placePayment(po);
                 if(isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
                     paymentsTm.clear();
@@ -282,7 +291,6 @@ public class StudentFeesController {
 
     public void cmbSubjectOnAction(ActionEvent actionEvent) {
         String subName = cmbSubjectName.getValue();
-        System.out.println(subName);
         try {
             Subject subject = SubjectRepo.searchByName(subName);
             lblSubFee.setText(String.valueOf(subject.getFeeAmount()));

@@ -11,9 +11,8 @@ import javafx.scene.input.KeyEvent;
 import lk.ijse.oxford.BO.Custom.EmployeeBO;
 import lk.ijse.oxford.BO.Custom.Impl.EmployeeBOImpl;
 import lk.ijse.oxford.DTO.EmployeeDTO;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.UserDTO;
 import lk.ijse.oxford.DTO.tm.EmployeeTm;
-import lk.ijse.oxford.DAO.Custom.Impl.EmployeDAOImpl;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
 
@@ -49,15 +48,15 @@ public class AddEmployeeFormContoller {
     @FXML
     private TableView<EmployeeTm> tblEmployee;
     private List<EmployeeDTO> employeeList = new ArrayList<>();
-    private User user;
-    public void setUser(User user) {
+    private UserDTO user;
+    public void setUser(UserDTO user) {
         this.user=user;
         setUserId(user);
     }
 
     EmployeeBO employeeBO = new EmployeeBOImpl();
 
-    private void setUserId(User user) {
+    private void setUserId(UserDTO user) {
         lblUserId.setText(this.user.getUId());
     }
 

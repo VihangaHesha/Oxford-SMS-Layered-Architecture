@@ -13,7 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import lk.ijse.oxford.contoller.student_form_controllers.AddStudentFormContoller;
 import lk.ijse.oxford.contoller.student_form_controllers.EditStudentFormController;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.UserDTO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,8 +29,8 @@ public class StudentFormController implements Initializable {
     private StackPane container;
     @FXML
     private BorderPane bdStudent;
-    private User user;
-    public void setUser(User user) {
+    private UserDTO user;
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 

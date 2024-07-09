@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import lk.ijse.oxford.DAO.Custom.Impl.UserDAOImpl;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.UserDTO;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -30,13 +30,13 @@ public class UserFormController {
     private Label lblTime;
     @FXML
     private Label lblDate;
-    private User user;
+    private UserDTO user;
     private volatile boolean stop = false;
 
     UserDAOImpl userDAO = new UserDAOImpl();
 
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
         setUserDetails(user);
         setDate();
@@ -64,7 +64,7 @@ public class UserFormController {
         });
         thread.start();
     }
-    private void setUserDetails(User user) {
+    private void setUserDetails(UserDTO user) {
 
         lblUserName.setText(this.user.getName());
         lblUserPw.setText(this.user.getPw());

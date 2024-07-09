@@ -18,7 +18,7 @@ import lk.ijse.oxford.DTO.*;
 import lk.ijse.oxford.DTO.tm.PayDetailTm;
 import lk.ijse.oxford.DTO.tm.PaymentCartTm;
 import lk.ijse.oxford.BO.Custom.Impl.PlacePaymentBOImpl;
-import lk.ijse.oxford.DAO.Custom.Impl.SubjectRepo;
+import lk.ijse.oxford.DAO.Custom.Impl.SubjectDAOImpl;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
 import net.sf.jasperreports.engine.*;
@@ -134,7 +134,7 @@ public class StudentFeesController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            List<String> idList = SubjectRepo.getIds();
+            List<String> idList = SubjectDAOImpl.getIds();
 
             for (String id : idList) {
                 obList.add(id);
@@ -196,12 +196,12 @@ public class StudentFeesController {
 
             var payment = new PaymentDTO(payId,totalFee, date, stId,subId);
 
-            List<PaymentDetails> poList = new ArrayList<>();
+            List<PaymentDetailsDTO> poList = new ArrayList<>();
 
             for (int i = 0; i < tblFeePayment.getItems().size(); i++) {
                 PaymentCartTm tm = paymentsTm.get(i);
 
-                PaymentDetails od = new PaymentDetails(
+                PaymentDetailsDTO od = new PaymentDetailsDTO(
                         payId,
                         tm.getId(),
                         tm.getFee(),
@@ -210,7 +210,7 @@ public class StudentFeesController {
                 poList.add(od);
             }
 
-            PlacePayment po = new PlacePayment(payment, poList);
+            PlacePaymentDTO po = new PlacePaymentDTO(payment, poList);
             try {
                 boolean isPlaced = placePaymentBO.placePayment(po);
                 if(isPlaced) {
@@ -292,7 +292,7 @@ public class StudentFeesController {
     public void cmbSubjectOnAction(ActionEvent actionEvent) {
         String subName = cmbSubjectName.getValue();
         try {
-            Subject subject = SubjectRepo.searchByName(subName);
+            SubjectDTO subject = SubjectDAOImpl.searchByName(subName);
             lblSubFee.setText(String.valueOf(subject.getFeeAmount()));
             lblAbleSeats.setText(String.valueOf(subject.getAvailableSeats()));
             lblSubId.setText(subject.getSubId());

@@ -11,7 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lk.ijse.oxford.db.DbConnection;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.UserDTO;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
 
@@ -29,7 +29,7 @@ public class LoginFormController {
     @FXML
     public Parent rootNode;
 
-    private User user;
+    private UserDTO user;
 
 
     public void btnLoginOnAction(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -57,7 +57,7 @@ public class LoginFormController {
         if (resultSet.next()){
             String dbPw = resultSet.getString(3);
             if (dbPw.equals(pw)){
-                user = new User(resultSet.getString(1),resultSet.getString(2)
+                user = new UserDTO(resultSet.getString(1),resultSet.getString(2)
                         ,resultSet.getString(3),resultSet.getString(4)
                         ,resultSet.getString(5));
                 navigateToDashboard();

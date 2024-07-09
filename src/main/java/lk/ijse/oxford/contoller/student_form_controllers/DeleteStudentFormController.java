@@ -13,9 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.oxford.db.DbConnection;
-import lk.ijse.oxford.DTO.Student;
+import lk.ijse.oxford.DTO.StudentDTO;
 import lk.ijse.oxford.DTO.tm.StudentTm;
-import lk.ijse.oxford.DAO.Custom.Impl.StudentRepo;
+import lk.ijse.oxford.DAO.Custom.Impl.StudentDAOImpl;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
 
@@ -50,7 +50,7 @@ public class DeleteStudentFormController {
     private TableColumn<?,?>colStGrade;
     @FXML
     private TableView<StudentTm> tblStudent;
-    private List<Student> studentList = new ArrayList<>();
+    private List<StudentDTO> studentList = new ArrayList<>();
 
     public void initialize(){
         this.studentList = getAllStudents();
@@ -62,7 +62,7 @@ public class DeleteStudentFormController {
             throw new RuntimeException(e);
         }
         try {
-            studentCount = StudentRepo.getStudentCount();
+            studentCount = StudentDAOImpl.getStudentCount();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -73,10 +73,10 @@ public class DeleteStudentFormController {
         lblStudentCount.setText(String.valueOf(studentCount));
     }
 
-    private List<Student> getAllStudents() {
-        List<Student> customerList = null;
+    private List<StudentDTO> getAllStudents() {
+        List<StudentDTO> customerList = null;
         try {
-            customerList = StudentRepo.getAll();
+            customerList = StudentDAOImpl.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -86,7 +86,7 @@ public class DeleteStudentFormController {
     private void loadStudentTable() {
         ObservableList<StudentTm> tmList = FXCollections.observableArrayList();
 
-        for (Student student : studentList) {
+        for (StudentDTO student : studentList) {
             StudentTm studentTm = new StudentTm(
                     student.getStId(),
                     student.getUserId(),
@@ -114,7 +114,7 @@ public class DeleteStudentFormController {
             String id = txtStudentId.getText();
 
             try {
-                boolean isDeleted = StudentRepo.delete(id);
+                boolean isDeleted = StudentDAOImpl.delete(id);
                 if (isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Data Deleted!").show();
                     initialize();

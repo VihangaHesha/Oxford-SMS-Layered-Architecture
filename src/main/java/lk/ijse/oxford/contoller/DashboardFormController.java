@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.UserDTO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 public class DashboardFormController implements Initializable {
     @FXML
     private StackPane dashContainer;
-    private User user;
+    private UserDTO user;
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
     @Override

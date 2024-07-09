@@ -94,7 +94,7 @@ public class HomeFormController {
             throw new RuntimeException(e);
         }
         try {
-            studentCount = StudentRepo.getStudentCount();
+            studentCount = StudentDAOImpl.getStudentCount();
             employeeCount = employeeBO.getEmployeeCount();
             equipmentCount = equipmentBO.getEquipmentCount();
             totalSalary = salaryBO.getTotalSalary();

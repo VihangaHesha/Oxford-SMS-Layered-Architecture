@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import lk.ijse.oxford.contoller.employee_form_controllers.AddEmployeeFormContoller;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.UserDTO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,8 +21,8 @@ public class EmployeeFormController implements Initializable {
     private StackPane employeeContainer;
     @FXML
     private BorderPane bdEmployee;
-    private User user;
-    public void setUser(User user) {
+    private UserDTO user;
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 

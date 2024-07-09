@@ -4,7 +4,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Student {
+public class StudentDTO {
     private String stId;
     private String grade;
     private String name;

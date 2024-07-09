@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PlacePayment {
-    private PaymentDTO payment;
-    private List<PaymentDetails> pdList;
+public class SubjectDTO {
+    private String SubId;
+    private String description;
+    private double feeAmount;
+    private int availableSeats;
 }

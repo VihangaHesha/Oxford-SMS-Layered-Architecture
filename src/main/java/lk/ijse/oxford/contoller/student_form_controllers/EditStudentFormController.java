@@ -9,10 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.oxford.DTO.Student;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.StudentDTO;
+import lk.ijse.oxford.DTO.UserDTO;
 import lk.ijse.oxford.DTO.tm.StudentTm;
-import lk.ijse.oxford.DAO.Custom.Impl.StudentRepo;
+import lk.ijse.oxford.DAO.Custom.Impl.StudentDAOImpl;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
 
@@ -47,14 +47,14 @@ public class EditStudentFormController {
     private TableColumn<StudentTm,String >colStGrade;
     @FXML
     private TableView<StudentTm> tblStudent;
-    private List<Student> studentList = new ArrayList<>();
-    private User user;
-    public void setUser(User user) {
+    private List<StudentDTO> studentList = new ArrayList<>();
+    private UserDTO user;
+    public void setUser(UserDTO user) {
         this.user=user;
         setUserId(user);
     }
 
-    private void setUserId(User user) {
+    private void setUserId(UserDTO user) {
         lblUserId.setText(this.user.getUId());
     }
 
@@ -64,10 +64,10 @@ public class EditStudentFormController {
         loadStudentTable();
     }
 
-    private List<Student> getAllStudents() {
-        List<Student> customerList = null;
+    private List<StudentDTO> getAllStudents() {
+        List<StudentDTO> customerList = null;
         try {
-            customerList = StudentRepo.getAll();
+            customerList = StudentDAOImpl.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -77,7 +77,7 @@ public class EditStudentFormController {
     private void loadStudentTable() {
         ObservableList<StudentTm> tmList = FXCollections.observableArrayList();
 
-        for (Student student : studentList) {
+        for (StudentDTO student : studentList) {
             StudentTm customerTm = new StudentTm(
                     student.getStId(),
                     student.getUserId(),
@@ -109,11 +109,11 @@ public class EditStudentFormController {
             String grade = txtGrade.getText();
             lblUserId.setText(user.getUId());
 
-            Student student = new Student(id,grade, name,tel, address,lblUserId.getText());
+            StudentDTO student = new StudentDTO(id,grade, name,tel, address,lblUserId.getText());
             System.out.println(student.toString());
 
             try {
-                boolean isUpdated = StudentRepo.update(student);
+                boolean isUpdated = StudentDAOImpl.update(student);
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Data Is Updated!").show();
                     txtStudentName.setText("");

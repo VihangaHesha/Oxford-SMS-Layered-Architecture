@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Subject {
-    private String SubId;
-    private String description;
-    private double feeAmount;
-    private int availableSeats;
+public class PaymentDetailsDTO {
+    private String payId;
+    private String subId;
+    private double totalFee;
+    private int seats;
 }

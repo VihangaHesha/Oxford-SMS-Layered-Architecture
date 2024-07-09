@@ -2,14 +2,8 @@ package lk.ijse.oxford.DAO.Custom.Impl;
 
 import lk.ijse.oxford.DAO.Custom.ClassroomDAO;
 import lk.ijse.oxford.Entity.Classroom;
-import lk.ijse.oxford.db.DbConnection;
-import lk.ijse.oxford.DTO.ClassroomDTO;
-import lk.ijse.oxford.DTO.PaymentDetails;
 import lk.ijse.oxford.util.SQLUtil;
 
-import java.awt.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

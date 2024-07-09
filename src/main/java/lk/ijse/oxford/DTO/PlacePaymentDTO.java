@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CmbSubject {
-    private double fee;
-    private int ableSeats;
+public class PlacePaymentDTO {
+    private PaymentDTO payment;
+    private List<PaymentDetailsDTO> pdList;
 }

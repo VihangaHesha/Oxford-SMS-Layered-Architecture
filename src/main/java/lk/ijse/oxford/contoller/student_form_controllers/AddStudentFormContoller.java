@@ -8,10 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import lk.ijse.oxford.DTO.Student;
-import lk.ijse.oxford.DTO.User;
+import lk.ijse.oxford.DTO.StudentDTO;
+import lk.ijse.oxford.DTO.UserDTO;
 import lk.ijse.oxford.DTO.tm.StudentTm;
-import lk.ijse.oxford.DAO.Custom.Impl.StudentRepo;
+import lk.ijse.oxford.DAO.Custom.Impl.StudentDAOImpl;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
 
@@ -46,15 +46,15 @@ public class AddStudentFormContoller {
     private TableColumn<?,?>colStGrade;
     @FXML
     private TableView<StudentTm>tblStudent;
-    private List<Student> studentList = new ArrayList<>();
+    private List<StudentDTO> studentList = new ArrayList<>();
 
-    private User user;
-    public void setUser(User user) {
+    private UserDTO user;
+    public void setUser(UserDTO user) {
         this.user=user;
         setUserId(user);
     }
 
-    private void setUserId(User user) {
+    private void setUserId(UserDTO user) {
         lblUserId.setText(this.user.getUId());
     }
 
@@ -67,7 +67,7 @@ public class AddStudentFormContoller {
 
     private void loadNextStId() {
         try {
-            String currentId = StudentRepo.currentId();
+            String currentId = StudentDAOImpl.currentId();
             String nextId = nextId(currentId);
 
             lblStId.setText(nextId);
@@ -89,10 +89,10 @@ public class AddStudentFormContoller {
         }
     }
 
-    private List<Student> getAllStudents() {
-        List<Student> customerList = null;
+    private List<StudentDTO> getAllStudents() {
+        List<StudentDTO> customerList = null;
         try {
-            customerList = StudentRepo.getAll();
+            customerList = StudentDAOImpl.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -102,7 +102,7 @@ public class AddStudentFormContoller {
     private void loadStudentTable() {
         ObservableList<StudentTm> tmList = FXCollections.observableArrayList();
 
-        for (Student student : studentList) {
+        for (StudentDTO student : studentList) {
             StudentTm customerTm = new StudentTm(
                     student.getStId(),
                     student.getUserId(),
@@ -135,10 +135,10 @@ public class AddStudentFormContoller {
             String grade = txtGrade.getText();
             String userId = lblUserId.getText();
 
-            Student student = new Student(id, grade,name , tel,address,userId);
+            StudentDTO student = new StudentDTO(id, grade,name , tel,address,userId);
 
             try {
-                boolean isSaved = StudentRepo.save(student);
+                boolean isSaved = StudentDAOImpl.save(student);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Data Saved!").show();
                     txtStudentName.setText("");

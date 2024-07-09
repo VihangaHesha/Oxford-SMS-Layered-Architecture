@@ -1,14 +1,14 @@
 package lk.ijse.oxford.DAO.Custom.Impl;
 
 import lk.ijse.oxford.db.DbConnection;
-import lk.ijse.oxford.DTO.Student;
+import lk.ijse.oxford.DTO.StudentDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentRepo {
-    public static List<Student> getAll() throws SQLException {
+public class StudentDAOImpl {
+    public static List<StudentDTO> getAll() throws SQLException {
         String sql = "SELECT * FROM Student";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
@@ -16,7 +16,7 @@ public class StudentRepo {
 
         ResultSet resultSet = pstm.executeQuery();
 
-        List<Student>studentList = new ArrayList<>();
+        List<StudentDTO>studentList = new ArrayList<>();
         while (resultSet.next()) {
             String stId = resultSet.getString(1);
             String name = resultSet.getString(2);
@@ -25,13 +25,13 @@ public class StudentRepo {
             String address = resultSet.getString(5);
             String userId = resultSet.getString(6);
 
-            Student student = new Student(stId,userId,name,contact,address,grade);
+            StudentDTO student = new StudentDTO(stId,userId,name,contact,address,grade);
             studentList.add(student);
         }
         return studentList;
     }
 
-    public static boolean save(Student student) throws SQLException {
+    public static boolean save(StudentDTO student) throws SQLException {
         String sql ="INSERT INTO Student VALUES (?,?,?,?,?,?)";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
@@ -57,7 +57,7 @@ public class StudentRepo {
         return pstm.executeUpdate() > 0;
     }
 
-    public static boolean update(Student student) throws SQLException {
+    public static boolean update(StudentDTO student) throws SQLException {
 
         String sql = "UPDATE Student SET Name = ? , Grade = ? , Contact = ? , Address = ? ,UserId = ? WHERE StId = ?";
 

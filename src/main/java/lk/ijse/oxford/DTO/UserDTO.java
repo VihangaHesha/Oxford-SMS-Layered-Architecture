@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PaymentDetails {
-    private String payId;
-    private String subId;
-    private double totalFee;
-    private int seats;
+public class UserDTO {
+    private String uId;
+    private String name;
+    private String pw;
+    private String contact;
+    private String email;
 }

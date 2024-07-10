@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.Custom.Impl.StudentBOImpl;
+import lk.ijse.oxford.BO.Custom.StudentBO;
 import lk.ijse.oxford.DTO.StudentDTO;
 import lk.ijse.oxford.DTO.UserDTO;
 import lk.ijse.oxford.DTO.tm.StudentTm;
@@ -48,6 +50,8 @@ public class EditStudentFormController {
     @FXML
     private TableView<StudentTm> tblStudent;
     private List<StudentDTO> studentList = new ArrayList<>();
+
+    StudentBO studentBO = new StudentBOImpl();
     private UserDTO user;
     public void setUser(UserDTO user) {
         this.user=user;
@@ -67,8 +71,10 @@ public class EditStudentFormController {
     private List<StudentDTO> getAllStudents() {
         List<StudentDTO> customerList = null;
         try {
-            customerList = StudentDAOImpl.getAll();
+            customerList = studentBO.getAll();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return customerList;
@@ -113,7 +119,7 @@ public class EditStudentFormController {
             System.out.println(student.toString());
 
             try {
-                boolean isUpdated = StudentDAOImpl.update(student);
+                boolean isUpdated = studentBO.update(student);
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Data Is Updated!").show();
                     txtStudentName.setText("");
@@ -124,6 +130,8 @@ public class EditStudentFormController {
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
     }

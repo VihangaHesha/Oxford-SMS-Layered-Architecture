@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.Custom.Impl.StudentBOImpl;
+import lk.ijse.oxford.BO.Custom.StudentBO;
 import lk.ijse.oxford.db.DbConnection;
 import lk.ijse.oxford.DTO.StudentDTO;
 import lk.ijse.oxford.DTO.tm.StudentTm;
@@ -52,6 +54,8 @@ public class DeleteStudentFormController {
     private TableView<StudentTm> tblStudent;
     private List<StudentDTO> studentList = new ArrayList<>();
 
+    StudentBO studentBO = new StudentBOImpl();
+
     public void initialize(){
         this.studentList = getAllStudents();
         setCellValueFactory();
@@ -62,8 +66,10 @@ public class DeleteStudentFormController {
             throw new RuntimeException(e);
         }
         try {
-            studentCount = StudentDAOImpl.getStudentCount();
+            studentCount = studentBO.getStudentCount();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         setStudentCount(studentCount);
@@ -76,8 +82,10 @@ public class DeleteStudentFormController {
     private List<StudentDTO> getAllStudents() {
         List<StudentDTO> customerList = null;
         try {
-            customerList = StudentDAOImpl.getAll();
+            customerList = studentBO.getAll();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return customerList;
@@ -114,13 +122,15 @@ public class DeleteStudentFormController {
             String id = txtStudentId.getText();
 
             try {
-                boolean isDeleted = StudentDAOImpl.delete(id);
+                boolean isDeleted = studentBO.delete(id);
                 if (isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Data Deleted!").show();
                     initialize();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
     }

@@ -11,8 +11,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.oxford.BO.Custom.Impl.PaymentBOImpl;
+import lk.ijse.oxford.BO.Custom.Impl.SubjectBOImpl;
 import lk.ijse.oxford.BO.Custom.PaymentBO;
 import lk.ijse.oxford.BO.Custom.PlacePaymentBO;
+import lk.ijse.oxford.BO.Custom.SubjectBO;
+import lk.ijse.oxford.DAO.Custom.SubjectDAO;
 import lk.ijse.oxford.db.DbConnection;
 import lk.ijse.oxford.DTO.*;
 import lk.ijse.oxford.DTO.tm.PayDetailTm;
@@ -82,6 +85,7 @@ public class StudentFeesController {
 
     PaymentBO paymentBO = new PaymentBOImpl();
     PlacePaymentBO placePaymentBO = new PlacePaymentBOImpl();
+    SubjectBO subjectBO = new SubjectBOImpl();
 
     public void initialize(){
         this.payDetail = getLastFiveTransaction();
@@ -134,7 +138,7 @@ public class StudentFeesController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            List<String> idList = SubjectDAOImpl.getIds();
+            List<String> idList = subjectBO.getIds();
 
             for (String id : idList) {
                 obList.add(id);
@@ -142,6 +146,8 @@ public class StudentFeesController {
             cmbSubjectName.setItems(obList);
 
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -292,12 +298,14 @@ public class StudentFeesController {
     public void cmbSubjectOnAction(ActionEvent actionEvent) {
         String subName = cmbSubjectName.getValue();
         try {
-            SubjectDTO subject = SubjectDAOImpl.searchByName(subName);
+            SubjectDTO subject = subjectBO.searchByName(subName);
             lblSubFee.setText(String.valueOf(subject.getFeeAmount()));
             lblAbleSeats.setText(String.valueOf(subject.getAvailableSeats()));
             lblSubId.setText(subject.getSubId());
 
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

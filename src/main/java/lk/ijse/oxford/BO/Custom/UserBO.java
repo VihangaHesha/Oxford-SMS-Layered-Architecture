@@ -1,8 +1,10 @@
 package lk.ijse.oxford.BO.Custom;
 
+import lk.ijse.oxford.BO.SuperBO;
+
 import java.sql.SQLException;
 
-public interface UserBO {
+public interface UserBO extends SuperBO {
     
     public  boolean updateName(String uId, String name) throws SQLException, ClassNotFoundException ;
     

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.ClassroomBO;
 import lk.ijse.oxford.BO.Custom.Impl.ClassroomBOImpl;
 import lk.ijse.oxford.DTO.ClassroomDTO;
@@ -44,14 +45,14 @@ public class DeleteClassroomFormController {
     private TableView tblClassroom;
     private List<ClassroomDTO> classroomList = new ArrayList<>();
 
-    ClassroomBO classroomBO = new ClassroomBOImpl();
+    ClassroomBO classroomBO = (ClassroomBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CLASSROOM);
 
     public void initialize(){
         this.classroomList = getAllClassrooms();
         setCellValueFactory();
         loadClassroomTable();
         try {
-            classCount= classroomBO.getClassCount();
+            classCount= classroomBO.getCount();
             classCapacity= classroomBO.getClassCapacity();
         } catch (SQLException e) {
             throw new RuntimeException(e);

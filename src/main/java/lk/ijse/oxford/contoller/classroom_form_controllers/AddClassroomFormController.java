@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.ClassroomBO;
 import lk.ijse.oxford.BO.Custom.Impl.ClassroomBOImpl;
 import lk.ijse.oxford.DAO.Custom.ClassroomDAO;
@@ -47,7 +48,7 @@ public class AddClassroomFormController {
     @FXML
     private TableView tblClassroom;
 
-    ClassroomBO classroomBO = new ClassroomBOImpl();
+    ClassroomBO classroomBO = (ClassroomBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CLASSROOM);
     private List<ClassroomDTO> classroomList = new ArrayList<>();
     public void initialize(){
         this.classroomList = getAllClassrooms();
@@ -55,7 +56,7 @@ public class AddClassroomFormController {
         loadClassroomTable();
         loadNextClassId();
         try {
-            classCount= classroomBO.getClassCount();
+            classCount= classroomBO.getCount();
             classCapacity= classroomBO.getClassCapacity();
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.Impl.StudentBOImpl;
 import lk.ijse.oxford.BO.Custom.StudentBO;
 import lk.ijse.oxford.DTO.StudentDTO;
@@ -51,7 +52,7 @@ public class EditStudentFormController {
     private TableView<StudentTm> tblStudent;
     private List<StudentDTO> studentList = new ArrayList<>();
 
-    StudentBO studentBO = new StudentBOImpl();
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
     private UserDTO user;
     public void setUser(UserDTO user) {
         this.user=user;

@@ -27,12 +27,17 @@ public class PaymentBOImpl implements PaymentBO {
 
 
     public  String currentId() throws SQLException, ClassNotFoundException {
-        return paymentDAO.currentId();
+
+        ResultSet resultSet = paymentDAO.currentId();
+        if(resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
     }
 
-    public List<PayDetailDTO> getAll() throws SQLException, ClassNotFoundException {
+    public List<PayDetailDTO> getAllPayments() throws SQLException, ClassNotFoundException {
 
-        List<PayDetail> payDetail = paymentDAO.getAll();
+        List<PayDetail> payDetail = paymentDAO.getAllPayments();
         List<PayDetailDTO> payDetailDTOS = new ArrayList<>();
 
         for (PayDetail payDetails : payDetail){

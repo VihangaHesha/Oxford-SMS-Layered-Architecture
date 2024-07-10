@@ -35,7 +35,7 @@ public class ClassroomDAOImpl implements ClassroomDAO {
                 classroom.getSubId());
     }
     @Override
-    public  ResultSet getClassCount() throws SQLException, ClassNotFoundException {
+    public  ResultSet getCount() throws SQLException, ClassNotFoundException {
         ResultSet resultSet =SQLUtil.execute("SELECT COUNT(ClassId) AS total_class_count FROM Classroom");
 
         /*int classCount=0;
@@ -68,6 +68,11 @@ public class ClassroomDAOImpl implements ClassroomDAO {
                 classroom.getDescription(),
                 classroom.getCapacity(),
                 classroom.getClassId());
+    }
+
+    @Override
+    public Classroom searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
     }
 
     @Override

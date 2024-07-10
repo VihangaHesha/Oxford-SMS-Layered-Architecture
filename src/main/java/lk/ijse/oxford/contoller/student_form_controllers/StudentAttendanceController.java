@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.AttendanceBO;
 import lk.ijse.oxford.BO.Custom.Impl.AttendanceBOImpl;
 import lk.ijse.oxford.DTO.AttendanceDTO;
@@ -48,7 +49,7 @@ public class StudentAttendanceController {
     private TableView<AttedanceTm> tblAttendance;
     private List<AttendanceDTO> attendanceList = new ArrayList<>();
 
-    AttendanceBO attendanceBO = new AttendanceBOImpl();
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ATTENDANCE);
 
     public void initialize(){
         LocalDate date = LocalDate.now();

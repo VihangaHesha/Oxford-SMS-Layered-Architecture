@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.DAO.Custom.Impl.UserDAOImpl;
 import lk.ijse.oxford.DAO.Custom.UserDAO;
 import lk.ijse.oxford.util.Regex;
@@ -17,7 +18,7 @@ public class EditPwFormController {
     private JFXTextField txtUserId;
     @FXML
     private JFXTextField txtPw;
-    UserDAO userDAO = new UserDAOImpl();
+    UserDAO userDAO = (UserDAO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
     public void btnPwSaveOnAction(ActionEvent actionEvent) {
         if (isValidate()){
             String id = txtUserId.getText();

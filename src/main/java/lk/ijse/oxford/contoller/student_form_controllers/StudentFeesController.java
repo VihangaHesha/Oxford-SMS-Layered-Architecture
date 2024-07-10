@@ -10,6 +10,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.Impl.PaymentBOImpl;
 import lk.ijse.oxford.BO.Custom.Impl.SubjectBOImpl;
 import lk.ijse.oxford.BO.Custom.PaymentBO;
@@ -83,9 +84,9 @@ public class StudentFeesController {
     private double netTotal=0;
     private String pickedDate;
 
-    PaymentBO paymentBO = new PaymentBOImpl();
-    PlacePaymentBO placePaymentBO = new PlacePaymentBOImpl();
-    SubjectBO subjectBO = new SubjectBOImpl();
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
+    PlacePaymentBO placePaymentBO = (PlacePaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PLACEPAYMENT);
+    SubjectBO subjectBO = (SubjectBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUBJECT);
 
     public void initialize(){
         this.payDetail = getLastFiveTransaction();
@@ -109,7 +110,7 @@ public class StudentFeesController {
     private List<PayDetailDTO> getLastFiveTransaction() {
         List<PayDetailDTO> payDetailList = null;
         try {
-            payDetailList = paymentBO.getAll();
+            payDetailList = paymentBO.getAllPayments();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

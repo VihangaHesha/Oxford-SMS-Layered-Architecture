@@ -15,6 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.*;
 import lk.ijse.oxford.BO.Custom.Impl.*;
 import lk.ijse.oxford.DAO.Custom.Impl.*;
@@ -73,13 +75,14 @@ public class HomeFormController {
     private volatile boolean stop = false;
     private String nextId;
 
-    TimeTableBO timeTableBO = new TimeTableBOImpl();
-    EmployeeBO employeeBO = new EmployeeBOImpl();
-    SalaryBO salaryBO = new SalaryBOImpl();
-    EquipmentBO equipmentBO = new EquipmentBOImpl();
-    AttendanceBO attendanceBO = new AttendanceBOImpl();
-    SetAttendanceBO setAttendanceBO = new SetAttendanceBOImpl();
-    PaymentBO paymentBO = new PaymentBOImpl();
+    TimeTableBO timeTableBO = (TimeTableBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.TIMETABLE);
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
+    SalaryBO salaryBO = (SalaryBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SALARY);
+    EquipmentBO equipmentBO = (EquipmentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EQUIPMENT);
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ATTENDANCE);
+    SetAttendanceBO setAttendanceBO = (SetAttendanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SETATTENDANCE);
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
 
 
     public void initialize(){
@@ -94,9 +97,9 @@ public class HomeFormController {
             throw new RuntimeException(e);
         }
         try {
-            studentCount = StudentDAOImpl.getStudentCount();
+            studentCount = studentBO.getCount();
             employeeCount = employeeBO.getEmployeeCount();
-            equipmentCount = equipmentBO.getEquipmentCount();
+            equipmentCount = equipmentBO.getCount();
             totalSalary = salaryBO.getTotalSalary();
             totalPayments = paymentBO.getTotalPayments();
         } catch (SQLException e) {

@@ -55,8 +55,8 @@ public class EquipmentBOImpl implements EquipmentBO {
         return equipmentDAO.update(equipment);
     }
     @Override
-    public  int getEquipmentCount() throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = equipmentDAO.getEquipmentCount();
+    public  int getCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = equipmentDAO.getCount();
         int equipmentCount=0;
         if (resultSet.next()){
             equipmentCount = resultSet.getInt("equipment_count");

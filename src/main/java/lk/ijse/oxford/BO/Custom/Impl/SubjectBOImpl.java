@@ -1,5 +1,6 @@
 package lk.ijse.oxford.BO.Custom.Impl;
 
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.SubjectBO;
 import lk.ijse.oxford.DAO.Custom.Impl.SubjectDAOImpl;
 import lk.ijse.oxford.DAO.Custom.SubjectDAO;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class SubjectBOImpl implements SubjectBO {
 
-    SubjectDAO subjectDAO = new SubjectDAOImpl();
+    SubjectDAO subjectDAO = (SubjectDAO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUBJECT);
 
     public List<String> getIds() throws SQLException, ClassNotFoundException {
 

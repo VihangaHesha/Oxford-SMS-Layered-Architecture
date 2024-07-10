@@ -1,5 +1,6 @@
 package lk.ijse.oxford.BO.Custom;
 
+import lk.ijse.oxford.BO.SuperBO;
 import lk.ijse.oxford.DTO.EquipmentDTO;
 import lk.ijse.oxford.Entity.Equipment;
 import lk.ijse.oxford.Entity.EquipmentUpdate;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface EquipmentBO {
+public interface EquipmentBO extends SuperBO {
     public List<EquipmentDTO> getAll() throws SQLException, ClassNotFoundException ;
     
     public boolean save(EquipmentDTO dto) throws SQLException, ClassNotFoundException ;
@@ -18,5 +19,5 @@ public interface EquipmentBO {
     
     public  boolean update(EquipmentDTO dto) throws SQLException, ClassNotFoundException ;
     
-    public  int getEquipmentCount() throws SQLException, ClassNotFoundException ;
+    public  int getCount() throws SQLException, ClassNotFoundException ;
 }

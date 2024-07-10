@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.DAO.Custom.Impl.UserDAOImpl;
 import lk.ijse.oxford.util.Regex;
 import lk.ijse.oxford.util.TextFields;
@@ -17,7 +18,7 @@ public class EditContactFormController {
     @FXML
     private JFXTextField txtContact;
 
-    UserDAOImpl userDAO = new UserDAOImpl();
+    UserDAOImpl userDAO = (UserDAOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
 
     public void btnContactSaveOnAction(ActionEvent actionEvent) {
         if (isValidate()){

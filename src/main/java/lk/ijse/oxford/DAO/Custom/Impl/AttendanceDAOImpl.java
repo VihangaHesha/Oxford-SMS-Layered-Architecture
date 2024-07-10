@@ -7,6 +7,7 @@ import lk.ijse.oxford.util.SQLUtil;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
 
 public class AttendanceDAOImpl implements AttendanceDAO {
     @Override
@@ -21,6 +22,12 @@ public class AttendanceDAOImpl implements AttendanceDAO {
         ResultSet resultSet = SQLUtil.execute("SELECT AttendId FROM Attendance ORDER BY AttendId desc LIMIT 1");
         return resultSet;
     }
+
+    @Override
+    public List<AttendMarking> getAll() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
     @Override
     public boolean save(AttendMarking attendMarking) throws SQLException, ClassNotFoundException {
 
@@ -29,6 +36,26 @@ public class AttendanceDAOImpl implements AttendanceDAO {
                 attendMarking.getDate(),
                 attendMarking.getAttendMark(),
                 attendMarking.getStId());
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean update(AttendMarking entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public AttendMarking searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet getCount() throws SQLException, ClassNotFoundException {
+        return null;
     }
 
 }

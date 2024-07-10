@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.EmployeeBO;
 import lk.ijse.oxford.BO.Custom.Impl.EmployeeBOImpl;
 import lk.ijse.oxford.DTO.EmployeeDTO;
@@ -54,7 +55,7 @@ public class AddEmployeeFormContoller {
         setUserId(user);
     }
 
-    EmployeeBO employeeBO = new EmployeeBOImpl();
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     private void setUserId(UserDTO user) {
         lblUserId.setText(this.user.getUId());

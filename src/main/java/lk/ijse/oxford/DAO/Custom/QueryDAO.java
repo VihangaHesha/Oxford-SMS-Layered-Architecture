@@ -1,5 +1,7 @@
 package lk.ijse.oxford.DAO.Custom;
 
+import lk.ijse.oxford.BO.SuperBO;
+import lk.ijse.oxford.DAO.SuperDAO;
 import lk.ijse.oxford.Entity.Attendance;
 import lk.ijse.oxford.Entity.Salary;
 import lk.ijse.oxford.util.SQLUtil;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface QueryDAO {
+public interface QueryDAO extends SuperDAO {
     public List<Salary> getAll() throws SQLException, ClassNotFoundException ;
 
     public  Salary searchByCode(String empId) throws SQLException, ClassNotFoundException ;

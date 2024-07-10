@@ -44,6 +44,12 @@ public class EquipmentDAOImpl implements EquipmentDAO {
             
             return SQLUtil.execute("DELETE FROM Equipment WHERE EquipId =?",id);
     }
+
+    @Override
+    public boolean update(Equipment entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
     @Override
     public  boolean update(EquipmentUpdate entity) throws SQLException, ClassNotFoundException {
             return SQLUtil.execute("UPDATE Student SET Description = ? , Qty = ?  WHERE EquipId = ?",
@@ -51,10 +57,21 @@ public class EquipmentDAOImpl implements EquipmentDAO {
                     entity.getQty(),
                     entity.getEquipId());
     }
+
     @Override
-    public  ResultSet getEquipmentCount() throws SQLException, ClassNotFoundException {
+    public  ResultSet getCount() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) equipment_count FROM Equipment");
         return resultSet;
+    }
+
+    @Override
+    public Equipment searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet currentId() throws SQLException, ClassNotFoundException {
+        return null;
     }
 }
 

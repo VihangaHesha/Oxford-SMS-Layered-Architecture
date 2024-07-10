@@ -72,7 +72,7 @@ public class EmployeeBOImpl implements EmployeeBO {
     @Override
     public  EmployeeDTO searchByCode(String id) throws SQLException, ClassNotFoundException {
 
-        Employee employees = employeeDAO.searchByCode(id);
+        Employee employees = employeeDAO.searchById(id);
         EmployeeDTO employeeDTO = new EmployeeDTO(
                 employees.getEmpId(),
                 employees.getName(),
@@ -86,7 +86,7 @@ public class EmployeeBOImpl implements EmployeeBO {
 
     @Override
     public  int getEmployeeCount() throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = employeeDAO.getEmployeeCount();
+        ResultSet resultSet = employeeDAO.getCount();
             int employeeCount=0;
             if (resultSet.next()){
                 employeeCount = resultSet.getInt("employee_count");

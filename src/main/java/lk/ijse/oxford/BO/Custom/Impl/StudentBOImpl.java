@@ -62,9 +62,9 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public int getStudentCount() throws SQLException, ClassNotFoundException {
+    public int getCount() throws SQLException, ClassNotFoundException {
 
-        ResultSet resultSet = studentDAO.getStudentCount();
+        ResultSet resultSet = studentDAO.getCount();
 
         int studentCount= 0;
         if (resultSet.next()){

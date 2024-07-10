@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.Impl.StudentBOImpl;
 import lk.ijse.oxford.BO.Custom.StudentBO;
 import lk.ijse.oxford.db.DbConnection;
@@ -54,7 +55,7 @@ public class DeleteStudentFormController {
     private TableView<StudentTm> tblStudent;
     private List<StudentDTO> studentList = new ArrayList<>();
 
-    StudentBO studentBO = new StudentBOImpl();
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
 
     public void initialize(){
         this.studentList = getAllStudents();
@@ -66,7 +67,7 @@ public class DeleteStudentFormController {
             throw new RuntimeException(e);
         }
         try {
-            studentCount = studentBO.getStudentCount();
+            studentCount = studentBO.getCount();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -1,10 +1,11 @@
 package lk.ijse.oxford.BO.Custom;
 
+import lk.ijse.oxford.BO.SuperBO;
 import lk.ijse.oxford.DTO.EmployeeDTO;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface EmployeeBO {
+public interface EmployeeBO extends SuperBO {
 
     
     public List<EmployeeDTO> getAll() throws SQLException, ClassNotFoundException ;

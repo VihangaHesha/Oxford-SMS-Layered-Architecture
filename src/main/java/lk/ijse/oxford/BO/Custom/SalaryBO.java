@@ -1,5 +1,6 @@
 package lk.ijse.oxford.BO.Custom;
 
+import lk.ijse.oxford.BO.SuperBO;
 import lk.ijse.oxford.DTO.SalaryDTO;
 import lk.ijse.oxford.Entity.Salary;
 
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface SalaryBO {
+public interface SalaryBO extends SuperBO {
     public List<SalaryDTO> getAll() throws SQLException, ClassNotFoundException ;
     public  SalaryDTO searchByCode(String empId) throws SQLException, ClassNotFoundException ;
 

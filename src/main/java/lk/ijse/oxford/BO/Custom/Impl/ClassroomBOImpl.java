@@ -42,9 +42,9 @@ public class ClassroomBOImpl implements ClassroomBO {
         return classroomDAO.save(classroom);
     }
     @Override
-    public  int getClassCount() throws SQLException, ClassNotFoundException {
+    public  int getCount() throws SQLException, ClassNotFoundException {
 
-        ResultSet resultSet = classroomDAO.getClassCount();
+        ResultSet resultSet = classroomDAO.getCount();
 
         int classCount=0;
         if (resultSet.next()){

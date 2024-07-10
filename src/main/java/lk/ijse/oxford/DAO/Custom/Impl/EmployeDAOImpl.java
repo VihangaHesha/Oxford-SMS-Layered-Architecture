@@ -36,15 +36,15 @@ public class EmployeDAOImpl implements EmployeeDAO {
     }
     
     @Override
-    public  boolean save(Employee employee) throws SQLException, ClassNotFoundException {
+    public  boolean save(Employee entity) throws SQLException, ClassNotFoundException {
 
         return SQLUtil.execute("INSERT INTO employee VALUES(?,?,?,?,?,?)",
-                employee.getEmpId(),
-                employee.getName(),
-                employee.getContact(),
-                employee.getAddress(),
-                employee.getType(),
-                employee.getUserId());
+                entity.getEmpId(),
+                entity.getName(),
+                entity.getContact(),
+                entity.getAddress(),
+                entity.getType(),
+                entity.getUserId());
     }
     
     @Override
@@ -55,20 +55,20 @@ public class EmployeDAOImpl implements EmployeeDAO {
     }
     
     @Override
-    public  boolean update(Employee employee) throws SQLException, ClassNotFoundException {
+    public  boolean update(Employee entity) throws SQLException, ClassNotFoundException {
 
         return SQLUtil.execute("UPDATE Student SET Name = ? , Type = ? , Contact = ? , Address = ? ,UserId = ? WHERE EmpId = ?",
-                employee.getName(),
-                employee.getContact(),
-                employee.getAddress(),
-                employee.getType(),
-                employee.getUserId(),
-                employee.getEmpId());
+                entity.getName(),
+                entity.getContact(),
+                entity.getAddress(),
+                entity.getType(),
+                entity.getUserId(),
+                entity.getEmpId());
 
     }
     
     @Override
-    public  Employee searchByCode(String id) throws SQLException, ClassNotFoundException {
+    public  Employee searchById(String id) throws SQLException, ClassNotFoundException {
 
         ResultSet resultSet = SQLUtil.execute("SELECT * From  Employee  where EmpId=?",id);
         Employee employee = new Employee(
@@ -82,7 +82,7 @@ public class EmployeDAOImpl implements EmployeeDAO {
     }
     
     @Override
-    public  ResultSet getEmployeeCount() throws SQLException, ClassNotFoundException {
+    public  ResultSet getCount() throws SQLException, ClassNotFoundException {
         
         ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) employee_count FROM Employee");
         return resultSet;

@@ -16,8 +16,6 @@ import java.util.List;
 
 public class SubjectDAOImpl implements SubjectDAO {
 
-
-
     @Override
     public  ResultSet getIds() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.execute("SELECT SubId FROM Subject");
@@ -56,5 +54,40 @@ public class SubjectDAOImpl implements SubjectDAO {
         return SQLUtil.execute("UPDATE Subject SET AvailableSeats = AvailableSeats - ? WHERE SubId = ?",
                 od.getSeats(), od.getSubId());
         
+    }
+
+    @Override
+    public List<Subject> getAll() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public boolean save(Subject entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean update(Subject entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public Subject searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet getCount() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet currentId() throws SQLException, ClassNotFoundException {
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.oxford.DAO.Custom;
 
+import lk.ijse.oxford.DAO.CrudDAO;
 import lk.ijse.oxford.DTO.SubjectDTO;
 import lk.ijse.oxford.Entity.PaymentDetails;
 import lk.ijse.oxford.Entity.Subject;
@@ -9,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface SubjectDAO {
+public interface SubjectDAO extends CrudDAO<Subject> {
     public ResultSet getIds() throws SQLException, ClassNotFoundException;
 
     public Subject searchByName(String subName) throws SQLException, ClassNotFoundException;

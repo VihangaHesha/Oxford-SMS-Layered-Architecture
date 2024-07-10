@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.EquipmentBO;
 import lk.ijse.oxford.BO.Custom.Impl.EquipmentBOImpl;
 import lk.ijse.oxford.DTO.EquipmentDTO;
@@ -39,14 +40,14 @@ public class DeleteEquipmentFormController {
     private TableView tblEquipment;
 
     private List<EquipmentDTO> equipmentList = new ArrayList<>();
-    EquipmentBO equipmentBO = new EquipmentBOImpl();
+    EquipmentBO equipmentBO = (EquipmentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EQUIPMENT);
 
     public void initialize(){
         this.equipmentList = getAllEquipment();
         setCellValueFactory();
         loadEquipmentTable();
         try {
-            equipCount= equipmentBO.getEquipmentCount();
+            equipCount= equipmentBO.getCount();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

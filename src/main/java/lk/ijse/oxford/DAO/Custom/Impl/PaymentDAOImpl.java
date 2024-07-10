@@ -29,18 +29,13 @@ public class PaymentDAOImpl implements PaymentDAO {
 
 
 
-    public  String currentId() throws SQLException, ClassNotFoundException {
+    public  ResultSet currentId() throws SQLException, ClassNotFoundException {
         
         ResultSet resultSet = SQLUtil.execute("SELECT PayId FROM Payment ORDER BY PayId desc LIMIT 1");
-        
-
-        if(resultSet.next()) {
-            return resultSet.getString(1);
-        }
-        return null;
+        return resultSet;
     }
 
-    public  List<PayDetail> getAll() throws SQLException, ClassNotFoundException {
+    public  List<PayDetail> getAllPayments() throws SQLException, ClassNotFoundException {
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM Payment ORDER BY PayId desc");
         
@@ -74,5 +69,30 @@ public class PaymentDAOImpl implements PaymentDAO {
             totPayment=resultSet.getInt("total_payment");
         }
         return totPayment;
+    }
+
+    @Override
+    public List<Payment> getAll() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean update(Payment entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public Payment searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet getCount() throws SQLException, ClassNotFoundException {
+        return null;
     }
 }

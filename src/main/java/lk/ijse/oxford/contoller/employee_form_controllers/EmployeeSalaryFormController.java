@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.Impl.SalaryBOImpl;
 import lk.ijse.oxford.BO.Custom.SalaryBO;
 import lk.ijse.oxford.db.DbConnection;
@@ -57,7 +58,7 @@ public class EmployeeSalaryFormController implements Initializable {
     @FXML
     private TableView<SalaryDTO> tblSalary;
 
-    SalaryBO salaryBO = new SalaryBOImpl();
+    SalaryBO salaryBO = (SalaryBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SALARY);
     private ObservableList<SalaryDTO> salaryObservableList =FXCollections.observableArrayList();
     /*public void initialize(){
         try {

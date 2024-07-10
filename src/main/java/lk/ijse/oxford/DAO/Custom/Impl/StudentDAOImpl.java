@@ -63,7 +63,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public ResultSet getStudentCount() throws SQLException, ClassNotFoundException {
+    public ResultSet getCount() throws SQLException, ClassNotFoundException {
 
         ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) AS student_count FROM Student");
         return resultSet;
@@ -74,6 +74,7 @@ public class StudentDAOImpl implements StudentDAO {
         }
         return studentCount;*/
     }
+
     @Override
     public  ResultSet currentId() throws SQLException, ClassNotFoundException {
 
@@ -85,5 +86,9 @@ public class StudentDAOImpl implements StudentDAO {
             return resultSet.getString(1);
         }
         return null;*/
+    }
+    @Override
+    public Student searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
     }
 }

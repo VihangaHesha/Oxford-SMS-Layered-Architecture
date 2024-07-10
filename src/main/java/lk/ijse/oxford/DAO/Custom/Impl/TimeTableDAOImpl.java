@@ -27,4 +27,34 @@ public class TimeTableDAOImpl implements TimeTableDAO {
         }
         return timeTableDTOS;
     }
+
+    @Override
+    public boolean save(TimeTable entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean update(TimeTable entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public TimeTable searchById(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet getCount() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ResultSet currentId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.oxford.BO.BOFactory;
 import lk.ijse.oxford.BO.Custom.EmployeeBO;
 import lk.ijse.oxford.BO.Custom.Impl.EmployeeBOImpl;
 import lk.ijse.oxford.DTO.EmployeeDTO;
@@ -45,7 +46,7 @@ public class DeleteEmployeeFormController {
     private TableView<EmployeeTm> tblEmployee;
     private List<EmployeeDTO> employeeList = new ArrayList<>();
 
-    EmployeeBO employeeBO = new EmployeeBOImpl();
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     public void initialize(){
         this.employeeList = getAllEmployees();

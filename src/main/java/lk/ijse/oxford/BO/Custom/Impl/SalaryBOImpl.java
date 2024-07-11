@@ -5,6 +5,7 @@ import lk.ijse.oxford.DAO.Custom.Impl.QueryDAOImpl;
 import lk.ijse.oxford.DAO.Custom.Impl.SalaryDAOImpl;
 import lk.ijse.oxford.DAO.Custom.QueryDAO;
 import lk.ijse.oxford.DAO.Custom.SalaryDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.SalaryDTO;
 import lk.ijse.oxford.Entity.Salary;
 import lk.ijse.oxford.util.SQLUtil;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SalaryBOImpl implements SalaryBO {
-    QueryDAO queryDAO =  new QueryDAOImpl();
-    SalaryDAO salaryDAO = new SalaryDAOImpl();
+    QueryDAO queryDAO = (QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+    SalaryDAO salaryDAO = (SalaryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SALARY);
 
     @Override
     public List<SalaryDTO> getAll() throws SQLException, ClassNotFoundException {

@@ -4,6 +4,7 @@ import lk.ijse.oxford.BO.Custom.AttendanceBO;
 import lk.ijse.oxford.BO.Custom.SetAttendanceBO;
 import lk.ijse.oxford.DAO.Custom.Impl.PaymentDAOImpl;
 import lk.ijse.oxford.DAO.Custom.PaymentDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.AttendMarkingDTO;
 import lk.ijse.oxford.Entity.CheckPayment;
 import lk.ijse.oxford.db.DbConnection;
@@ -13,9 +14,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class SetAttendanceBOImpl implements SetAttendanceBO {
-    AttendanceBO attendanceBO = new AttendanceBOImpl();
+    AttendanceBO attendanceBO = (AttendanceBO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
 
-    PaymentDAO paymentDAO = new PaymentDAOImpl();
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
 
 
     public boolean markAttendance(MarkAttendanceDTO markAttendance) throws SQLException {

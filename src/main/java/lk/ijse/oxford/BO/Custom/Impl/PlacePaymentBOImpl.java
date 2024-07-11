@@ -7,6 +7,7 @@ import lk.ijse.oxford.DAO.Custom.Impl.SubjectDAOImpl;
 import lk.ijse.oxford.DAO.Custom.PaymentDAO;
 import lk.ijse.oxford.DAO.Custom.PaymentDetailDAO;
 import lk.ijse.oxford.DAO.Custom.SubjectDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.PaymentDetailsDTO;
 import lk.ijse.oxford.Entity.Payment;
 import lk.ijse.oxford.Entity.PaymentDetails;
@@ -19,11 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlacePaymentBOImpl implements PlacePaymentBO {
-    PaymentDAO paymentDAO = new PaymentDAOImpl();
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
 
-    PaymentDetailDAO paymentDetailDAO = new PaymentDetailsDAOImpl();
+    PaymentDetailDAO paymentDetailDAO = (PaymentDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTDETAILS);
 
-    SubjectDAO subjectDAO = new SubjectDAOImpl();
+    SubjectDAO subjectDAO = (SubjectDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUBJECT);
 
     public boolean updateSeats(List<PaymentDetailsDTO> pdList) throws SQLException, ClassNotFoundException {
         List<PaymentDetails> paymentDetails = new ArrayList<>(

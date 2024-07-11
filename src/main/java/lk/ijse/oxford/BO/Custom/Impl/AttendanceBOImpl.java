@@ -5,6 +5,7 @@ import lk.ijse.oxford.DAO.Custom.AttendanceDAO;
 import lk.ijse.oxford.DAO.Custom.Impl.AttendanceDAOImpl;
 import lk.ijse.oxford.DAO.Custom.Impl.QueryDAOImpl;
 import lk.ijse.oxford.DAO.Custom.QueryDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.AttendMarkingDTO;
 import lk.ijse.oxford.DTO.AttendanceDTO;
 import lk.ijse.oxford.Entity.AttendMarking;
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttendanceBOImpl implements AttendanceBO {
-    QueryDAO queryDAO = new QueryDAOImpl();
-    AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    QueryDAO queryDAO = (QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
+    AttendanceDAO attendanceDAO = (AttendanceDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
     @Override
     public AttendanceDTO searchById(String id) throws SQLException, ClassNotFoundException {
 

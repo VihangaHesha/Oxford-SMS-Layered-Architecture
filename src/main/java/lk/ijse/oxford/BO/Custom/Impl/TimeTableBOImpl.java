@@ -3,6 +3,7 @@ package lk.ijse.oxford.BO.Custom.Impl;
 import lk.ijse.oxford.BO.Custom.TimeTableBO;
 import lk.ijse.oxford.DAO.Custom.Impl.TimeTableDAOImpl;
 import lk.ijse.oxford.DAO.Custom.TimeTableDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.TimeTableDTO;
 import lk.ijse.oxford.Entity.TimeTable;
 import lk.ijse.oxford.util.SQLUtil;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TimeTableBOImpl implements TimeTableBO {
-    TimeTableDAO timeTableDAO = new TimeTableDAOImpl();
+    TimeTableDAO timeTableDAO = (TimeTableDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TIMETABLE);
     public  List<TimeTableDTO> getAll() throws SQLException, ClassNotFoundException {
         List<TimeTableDTO> timeTableDTO = new ArrayList<>();
         List<TimeTable> timeTables = timeTableDAO.getAll();

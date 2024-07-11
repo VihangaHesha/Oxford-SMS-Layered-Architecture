@@ -3,6 +3,7 @@ package lk.ijse.oxford.BO.Custom.Impl;
 import lk.ijse.oxford.BO.Custom.EquipmentBO;
 import lk.ijse.oxford.DAO.Custom.EquipmentDAO;
 import lk.ijse.oxford.DAO.Custom.Impl.EquipmentDAOImpl;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.EmployeeDTO;
 import lk.ijse.oxford.DTO.EquipmentDTO;
 import lk.ijse.oxford.Entity.Equipment;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EquipmentBOImpl implements EquipmentBO {
-    EquipmentDAO equipmentDAO = new EquipmentDAOImpl();
+    EquipmentDAO equipmentDAO = (EquipmentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EQUIPMENT);
     @Override
     public List<EquipmentDTO> getAll() throws SQLException, ClassNotFoundException {
 

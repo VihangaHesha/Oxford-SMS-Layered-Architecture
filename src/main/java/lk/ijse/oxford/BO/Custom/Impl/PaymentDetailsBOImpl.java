@@ -4,6 +4,7 @@ import lk.ijse.oxford.BO.Custom.PaymentDetailsBO;
 import lk.ijse.oxford.BO.Custom.PlacePaymentBO;
 import lk.ijse.oxford.DAO.Custom.Impl.PaymentDetailsDAOImpl;
 import lk.ijse.oxford.DAO.Custom.PaymentDetailDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.PaymentDetailsDTO;
 import lk.ijse.oxford.Entity.PaymentDetails;
 import lk.ijse.oxford.util.SQLUtil;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class PaymentDetailsBOImpl implements PaymentDetailsBO {
 
-    PaymentDetailDAO paymentDetailDAO = new PaymentDetailsDAOImpl();
+    PaymentDetailDAO paymentDetailDAO = (PaymentDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENTDETAILS);
 
     @Override
     public boolean save(List<PaymentDetailsDTO> pdList) throws SQLException, ClassNotFoundException {

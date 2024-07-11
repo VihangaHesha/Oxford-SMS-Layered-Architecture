@@ -3,6 +3,7 @@ package lk.ijse.oxford.BO.Custom.Impl;
 import lk.ijse.oxford.BO.Custom.StudentBO;
 import lk.ijse.oxford.DAO.Custom.Impl.StudentDAOImpl;
 import lk.ijse.oxford.DAO.Custom.StudentDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.StudentDTO;
 import lk.ijse.oxford.Entity.Student;
 import lk.ijse.oxford.util.SQLUtil;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
-    StudentDAO studentDAO = new StudentDAOImpl();
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
     @Override
     public List<StudentDTO> getAll() throws SQLException, ClassNotFoundException {
 

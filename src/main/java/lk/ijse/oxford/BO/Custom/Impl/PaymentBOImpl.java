@@ -3,6 +3,7 @@ package lk.ijse.oxford.BO.Custom.Impl;
 import lk.ijse.oxford.BO.Custom.PaymentBO;
 import lk.ijse.oxford.DAO.Custom.Impl.PaymentDAOImpl;
 import lk.ijse.oxford.DAO.Custom.PaymentDAO;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.CheckPaymentDTO;
 import lk.ijse.oxford.DTO.PayDetailDTO;
 import lk.ijse.oxford.DTO.PaymentDTO;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentBOImpl implements PaymentBO {
-    PaymentDAO paymentDAO = new PaymentDAOImpl();
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
     public boolean getFromPayId(CheckPaymentDTO dto) throws SQLException, ClassNotFoundException {
         CheckPayment checkPayment = new CheckPayment(dto.getStId(), dto.getMonth());
         return paymentDAO.getFromPayId(checkPayment);

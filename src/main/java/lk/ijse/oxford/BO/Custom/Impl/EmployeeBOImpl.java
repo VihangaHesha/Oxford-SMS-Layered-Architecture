@@ -3,6 +3,7 @@ package lk.ijse.oxford.BO.Custom.Impl;
 import lk.ijse.oxford.BO.Custom.EmployeeBO;
 import lk.ijse.oxford.DAO.Custom.EmployeeDAO;
 import lk.ijse.oxford.DAO.Custom.Impl.EmployeDAOImpl;
+import lk.ijse.oxford.DAO.DAOFactory;
 import lk.ijse.oxford.DTO.EmployeeDTO;
 import lk.ijse.oxford.Entity.Employee;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class EmployeeBOImpl implements EmployeeBO {
 
-    EmployeeDAO employeeDAO = new EmployeDAOImpl();
+    EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
 
     @Override
     public List<EmployeeDTO> getAll() throws SQLException, ClassNotFoundException {
